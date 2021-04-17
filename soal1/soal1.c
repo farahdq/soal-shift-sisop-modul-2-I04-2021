@@ -8,7 +8,6 @@
 #include <time.h>
 #include <dirent.h>
 
-
 #define
 void downloadfile(char download_link[],char filename[]) 
   {
@@ -52,3 +51,4 @@ void browserFolderthenMoveFiles(int*status,char foldername[],char stevany_folder
 		(void)closedir (dir);
 		} else perror("Couldn't open the directory");
 	}
+return 0;
