@@ -11,6 +11,15 @@ void downloadfile(char download_link[],char filename[])
 	char*argv[] = {"wget","--no-check-certificate", download_link, "-O", filename, "-q", NULL};
 	execv("/bin/wget",argv);
 	}
+void browserFolderthenMoveFiles(int*status,char foldername[],char stevany_foldername[]){
+	DIR*dir=opendir(foldername);
+	struct dirent*drent;
+	if (dir != NULL) {
+		while ((drent=readdir(dir)))
+		moveFile(drent,status,foldername,stevany_foldername);
+		(void)closedir (dir);
+		} else perror("Couldn't open the directory");
+	}
 void moveFile(struct dirent*drent, int*status, char foldername[],char stevany_foldername[]) {
 	pid_t child_move=fork();
 	if (child_move == 0 && (strcmp(drent->d_name, ".") ==0||strcmp(drent->d_name,"..")==0))
@@ -25,15 +34,6 @@ void moveFile(struct dirent*drent, int*status, char foldername[],char stevany_fo
 		execv("/bin/mv",argv);
 		}
 	while(wait(status)>0);
-	}
-void browserFolderthenMoveFiles(int*status,char foldername[],char stevany_foldername[]){
-	DIR*dir=opendir(foldername);
-	struct dirent*drent;
-	if (dir != NULL) {
-		while ((drent=readdir(dir)))
-		moveFile(drent,status,foldername,stevany_foldername);
-		(void)closedir (dir);
-		} else perror("Couldn't open the directory");
 	}
 void removeExtractedFolder(pid_t child_id, int*status, char*foldername[]) 
   {
