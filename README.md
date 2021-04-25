@@ -1,12 +1,12 @@
-## soal-shift-sisop-modul-2-I04-2021
+# soal-shift-sisop-modul-2-I04-2021
 
-## MEMBER - I04 
+# MEMBER - I04 
 	Hika Pasya Mustofa		          05111942000015
 	Farah Dhiah Qorirah		          05111942000018
 	Nadhif Bhagawanta Hadiprayitno		  05111942000029
   
-## NO 1
-# QUESTION :
+# NO 1
+## QUESTION :
 Once upon a time, there was a steven who lived a mediocre live. Steven had a girlfriend, but they have broken up before getting together. When he was thinking about his ex, he always watches https://www.youtube.com/watch?v=568DH_9CMKI to relieve his sadness. 
 
 In the meantime, Steven hates SISOP Course very much like no other, Few hours after breaking up with his girlfriend, he found another  woman named Stevany, but Stevany is the opposite of him because she likes SISOP course very much. Steven wanted to look good at SISOP course to impress her.
@@ -24,7 +24,7 @@ Note:
 Stevany’s birthday : 09 April Pukul 22.22 WIB
 All points are run by 1 script on the background, that includes downloading the zip file. So you just need to run 1 script and change the time and date to check the result.
 
-# ANSWER
+## ANSWER
 	void downloadfile(char download_link[],char filename[]) {
    	char*argv[] = {"wget","--no-check-certificate", download_link, "-O", filename, "-q", NULL};
     	execv("/bin/wget",argv);
@@ -162,8 +162,8 @@ this function will loop every second. after that it will check is the stevany bi
 	}
 this function will do fork, kill parent, do umask(), and ask the session id. the current dir become dir repo local. and all of the output (file) after executed will placed in /home/farahdq/soal-shift-2/soal1
 
-## NO2
-# QUESTION
+# NO2
+## QUESTION
 Loba works in a famous pet shop, one day he got a zip containing lots of pets photos and he was ordered to categorize the photos of these pets. Loba finds it difficult to do his work manually, moreover there is the possibility that he will be ordered to do the same thing multiple times. You are Loba's best friend and he is asking for your help to help with his work. 
 
 First, the program needs to extract the given zip into the folder “/home/[user]/modul2/petshop”. Because Loba's boss is careless, the zip may contain unimportant folders, so the program must be able to distinguish between files and folders so that it can process files that should be worked on and delete unnecessary folders.
@@ -182,7 +182,7 @@ umur  : 2 tahun
 
 Loba appreciates your help, so much so that he'll treat you to dinner next week!
 
-# ANSWER
+## ANSWER
 // 2A
 	int main() {
   	pid_t child1_id;
@@ -217,7 +217,7 @@ Loba appreciates your help, so much so that he'll treat you to dinner next week!
 	    }
 	  }
 	}
-this function is tu unzip folder pets.zip. the file will place in /home/farah/modul2/petshop and it will execute using execv"/bin/unzip"
+this function is unzip folder pets.zip. the file will place in /home/farah/modul2/petshop and it will execute using execv"/bin/unzip"
 
 
 
