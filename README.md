@@ -217,7 +217,7 @@ Loba appreciates your help, so much so that he'll treat you to dinner next week!
 	    }
 	  }
 	}
-this function is unzip folder pets.zip. the file will place in /home/farah/modul2/petshop and it will execute using execv"/bin/unzip"
+this function is for unzip folder pets.zip. the file will place in /home/farah/modul2/petshop and it will execute using execv"/bin/unzip"
 
 
 
