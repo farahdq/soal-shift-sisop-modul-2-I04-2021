@@ -1,12 +1,12 @@
-# soal-shift-sisop-modul-2-I04-2021
+## soal-shift-sisop-modul-2-I04-2021
 
 ## MEMBER - I04 
 	Hika Pasya Mustofa		          05111942000015
 	Farah Dhiah Qorirah		          05111942000018
 	Nadhif Bhagawanta Hadiprayitno		  05111942000029
   
-# NO 1
-## QUESTION :
+## NO 1
+# QUESTION :
 Once upon a time, there was a steven who lived a mediocre live. Steven had a girlfriend, but they have broken up before getting together. When he was thinking about his ex, he always watches https://www.youtube.com/watch?v=568DH_9CMKI to relieve his sadness. 
 
 In the meantime, Steven hates SISOP Course very much like no other, Few hours after breaking up with his girlfriend, he found another  woman named Stevany, but Stevany is the opposite of him because she likes SISOP course very much. Steven wanted to look good at SISOP course to impress her.
@@ -183,7 +183,7 @@ umur  : 2 tahun
 Loba appreciates your help, so much so that he'll treat you to dinner next week!
 
 # ANSWER
-	2A
+// 2A
 	int main() {
   	pid_t child1_id;
 	  int status1;
