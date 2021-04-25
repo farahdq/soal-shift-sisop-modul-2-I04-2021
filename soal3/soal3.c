@@ -44,7 +44,26 @@ int main() {
   while (1) {
    
     // Write Stuff here for 3a
+        time_t rawtime;
+        struct tm *information;
+    
+        char buffer[80];
+        time(&rawtime);
+    
+        information = localtime(&rawtime);
+    
+        strftime(buffer, sizeof(buffer), "%Y-%m-%d_%X", information);
 
+        pid_t child_id;
+        child_id = fork();
+
+        if(child_id == 0) 
+        {
+            char* arg[] = {"mkdir", "-p", buffer, NULL};
+            execv("/bin/mkdir", arg);
+    
+    
+    
     sleep(40);
   }
 }
