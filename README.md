@@ -1,6 +1,6 @@
 # soal-shift-sisop-modul-2-I04-2021
 
-## MEMBER 
+## MEMBER - I04 
 	Hika Pasya Mustofa		          05111942000015
 	Farah Dhiah Qorirah		          05111942000018
 	Nadhif Bhagawanta Hadiprayitno		  05111942000029
@@ -194,7 +194,7 @@ Loba appreciates your help, so much so that he'll treat you to dinner next week!
 	  }
 
 	  if (child1_id == 0) {
-	    char *argv[] = {"mkdir", "-p", "/home/HIKA/modul2/petshop", NULL};
+	    char *argv[] = {"mkdir", "-p", "/home/farah/modul2/petshop", NULL};
 	    execv("/bin/mkdir", argv);
 	  } else {
 	    while ((wait(&status1)) > 0);
@@ -206,17 +206,18 @@ Loba appreciates your help, so much so that he'll treat you to dinner next week!
 		exit(EXIT_FAILURE);
 	    }
 	    if (child2_id == 0){
-		char *argv[] = {"unzip", "pets", "-d", "/home/HIKA/modul2/petshop", NULL};
+		char *argv[] = {"unzip", "pets", "-d", "/home/farah/modul2/petshop", NULL};
 		execv("/bin/unzip", argv);
 	    }    else {
 		while ((wait(&status2)) > 0);
-		/*char *argv[] = {"find", "/home/HIKA/modul2/petshop", "-type", "d", "-delete", NULL};
+		/*char *argv[] = {"find", "/home/farah/modul2/petshop", "-type", "d", "-delete", NULL};
 		execv("/usr/bin/find", argv);*/
-		char *argv[] = {"rm", "-r", "/home/HIKA/modul2/petshop/apex_cheats","/home/zulu/modul2/petshop/musics", "/home/zulu/modul2/petshop/unimportant_files" ,NULL};
+		char *argv[] = {"rm", "-r", "/home/farah/modul2/petshop/apex_cheats","/home/farah/modul2/petshop/musics", "/home/farah/modul2/petshop/unimportant_files" ,NULL};
 		execv("/usr/bin/rm", argv);
 	    }
 	  }
 	}
+this function is tu unzip folder pets.zip. the file will place in /home/farah/modul2/petshop and it will execute using execv"/bin/unzip"
 
 
 
