@@ -13,7 +13,7 @@ int main() {
   }
 
   if (child1_id == 0) {
-    char *argv[] = {"mkdir", "-p", "/home/zulu/modul2/petshop", NULL};
+    char *argv[] = {"mkdir", "-p", "/home/farah/modul2/petshop", NULL};
     execv("/bin/mkdir", argv);
   } else {
     while ((wait(&status1)) > 0);
@@ -25,13 +25,13 @@ int main() {
         exit(EXIT_FAILURE);
     }
     if (child2_id == 0){
-        char *argv[] = {"unzip", "pets", "-d", "/home/zulu/modul2/petshop", NULL};
+        char *argv[] = {"unzip", "pets", "-d", "/home/farah/modul2/petshop", NULL};
         execv("/bin/unzip", argv);
     }    else {
         while ((wait(&status2)) > 0);
-        /*char *argv[] = {"find", "/home/zulu/modul2/petshop", "-type", "d", "-delete", NULL};
+        /*char *argv[] = {"find", "/home/farah/modul2/petshop", "-type", "d", "-delete", NULL};
         execv("/usr/bin/find", argv);*/
-        char *argv[] = {"rm", "-r", "/home/zulu/modul2/petshop/apex_cheats","/home/zulu/modul2/petshop/musics", "/home/zulu/modul2/petshop/unimportant_files" ,NULL};
+        char *argv[] = {"rm", "-r", "/home/farah/modul2/petshop/apex_cheats","/home/farah/modul2/petshop/musics", "/home/farah/modul2/petshop/unimportant_files" ,NULL};
         execv("/usr/bin/rm", argv);
     }
   }
