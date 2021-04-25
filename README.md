@@ -5,8 +5,8 @@
 	Farah Dhiah Qorirah		          05111942000018
 	Nadhif Bhagawanta Hadiprayitno		  05111942000029
   
-## NO 1
-# QUESTION :
+# NO 1
+## QUESTION :
 Once upon a time, there was a steven who lived a mediocre live. Steven had a girlfriend, but they have broken up before getting together. When he was thinking about his ex, he always watches https://www.youtube.com/watch?v=568DH_9CMKI to relieve his sadness. 
 
 In the meantime, Steven hates SISOP Course very much like no other, Few hours after breaking up with his girlfriend, he found another  woman named Stevany, but Stevany is the opposite of him because she likes SISOP course very much. Steven wanted to look good at SISOP course to impress her.
@@ -161,3 +161,62 @@ this function will loop every second. after that it will check is the stevany bi
     	return 0;
 	}
 this function will do fork, kill parent, do umask(), and ask the session id. the current dir become dir repo local. and all of the output (file) after executed will placed in /home/farahdq/soal-shift-2/soal1
+
+## NO2
+# QUESTION
+Loba works in a famous pet shop, one day he got a zip containing lots of pets photos and he was ordered to categorize the photos of these pets. Loba finds it difficult to do his work manually, moreover there is the possibility that he will be ordered to do the same thing multiple times. You are Loba's best friend and he is asking for your help to help with his work. 
+
+First, the program needs to extract the given zip into the folder “/home/[user]/modul2/petshop”. Because Loba's boss is careless, the zip may contain unimportant folders, so the program must be able to distinguish between files and folders so that it can process files that should be worked on and delete unnecessary folders.
+Pet photos need to be categorized based on the pet's species, so you will need to create a folder for each species that is in the zip file. Since you can't possibly check manually, the program needs to create the required folders according to the contents of the zip file.
+Example: Cats will be stored in "/petshop/cat", turtles will be stored in "/petshop/turtle".
+After the folders are created, your program should move the photos to the folder based on their respective species and rename the photo with the pet's name.
+Example: "/petshop/cat/joni.jpg"
+Because 1 photo may have more than 1 pet in it, photos must be moved to each corresponding category.
+Example: photo with the name "dog;baro;1_cat;joni;2.jpg" is moved to the folder "/petshop/cat/joni.jpg" and "/petshop/dog/baro.jpg"
+In each folder, create a file "keterangan.txt" that contains names and ages of all the pets in the folder. Format of "keterangan.txt" must be identical with the example below
+nama : joni
+umur  : 3 tahun
+
+nama : miko
+umur  : 2 tahun
+
+Loba appreciates your help, so much so that he'll treat you to dinner next week!
+
+# ANSWER
+	2A
+	int main() {
+  	pid_t child1_id;
+	  int status1;
+	  child1_id = fork();
+
+	  if (child1_id < 0) {
+	    exit(EXIT_FAILURE); // failing in making a process will result in stopping the program
+	  }
+
+	  if (child1_id == 0) {
+	    char *argv[] = {"mkdir", "-p", "/home/HIKA/modul2/petshop", NULL};
+	    execv("/bin/mkdir", argv);
+	  } else {
+	    while ((wait(&status1)) > 0);
+	    pid_t child2_id;
+	    int status2;
+	    child2_id = fork();
+
+	    if (child2_id < 0){
+		exit(EXIT_FAILURE);
+	    }
+	    if (child2_id == 0){
+		char *argv[] = {"unzip", "pets", "-d", "/home/HIKA/modul2/petshop", NULL};
+		execv("/bin/unzip", argv);
+	    }    else {
+		while ((wait(&status2)) > 0);
+		/*char *argv[] = {"find", "/home/HIKA/modul2/petshop", "-type", "d", "-delete", NULL};
+		execv("/usr/bin/find", argv);*/
+		char *argv[] = {"rm", "-r", "/home/HIKA/modul2/petshop/apex_cheats","/home/zulu/modul2/petshop/musics", "/home/zulu/modul2/petshop/unimportant_files" ,NULL};
+		execv("/usr/bin/rm", argv);
+	    }
+	  }
+	}
+
+
+
