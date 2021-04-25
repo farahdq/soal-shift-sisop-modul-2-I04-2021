@@ -1,6 +1,6 @@
 # soal-shift-sisop-modul-2-I04-2021
 
-# MEMBER - I04 
+## MEMBER 
 	Hika Pasya Mustofa		          05111942000015
 	Farah Dhiah Qorirah		          05111942000018
 	Nadhif Bhagawanta Hadiprayitno		  05111942000029
@@ -24,7 +24,7 @@ Note:
 Stevany’s birthday : 09 April Pukul 22.22 WIB
 All points are run by 1 script on the background, that includes downloading the zip file. So you just need to run 1 script and change the time and date to check the result.
 
-## ANSWER
+# ANSWER
 	void downloadfile(char download_link[],char filename[]) {
    	char*argv[] = {"wget","--no-check-certificate", download_link, "-O", filename, "-q", NULL};
     	execv("/bin/wget",argv);
@@ -162,8 +162,8 @@ this function will loop every second. after that it will check is the stevany bi
 	}
 this function will do fork, kill parent, do umask(), and ask the session id. the current dir become dir repo local. and all of the output (file) after executed will placed in /home/farahdq/soal-shift-2/soal1
 
-# NO2
-## QUESTION
+## NO2
+# QUESTION
 Loba works in a famous pet shop, one day he got a zip containing lots of pets photos and he was ordered to categorize the photos of these pets. Loba finds it difficult to do his work manually, moreover there is the possibility that he will be ordered to do the same thing multiple times. You are Loba's best friend and he is asking for your help to help with his work. 
 
 First, the program needs to extract the given zip into the folder “/home/[user]/modul2/petshop”. Because Loba's boss is careless, the zip may contain unimportant folders, so the program must be able to distinguish between files and folders so that it can process files that should be worked on and delete unnecessary folders.
@@ -182,8 +182,8 @@ umur  : 2 tahun
 
 Loba appreciates your help, so much so that he'll treat you to dinner next week!
 
-## ANSWER
-// 2A
+# ANSWER
+	2A
 	int main() {
   	pid_t child1_id;
 	  int status1;
@@ -194,7 +194,7 @@ Loba appreciates your help, so much so that he'll treat you to dinner next week!
 	  }
 
 	  if (child1_id == 0) {
-	    char *argv[] = {"mkdir", "-p", "/home/farah/modul2/petshop", NULL};
+	    char *argv[] = {"mkdir", "-p", "/home/HIKA/modul2/petshop", NULL};
 	    execv("/bin/mkdir", argv);
 	  } else {
 	    while ((wait(&status1)) > 0);
@@ -206,18 +206,110 @@ Loba appreciates your help, so much so that he'll treat you to dinner next week!
 		exit(EXIT_FAILURE);
 	    }
 	    if (child2_id == 0){
-		char *argv[] = {"unzip", "pets", "-d", "/home/farah/modul2/petshop", NULL};
+		char *argv[] = {"unzip", "pets", "-d", "/home/HIKA/modul2/petshop", NULL};
 		execv("/bin/unzip", argv);
 	    }    else {
 		while ((wait(&status2)) > 0);
-		/*char *argv[] = {"find", "/home/farah/modul2/petshop", "-type", "d", "-delete", NULL};
+		/*char *argv[] = {"find", "/home/HIKA/modul2/petshop", "-type", "d", "-delete", NULL};
 		execv("/usr/bin/find", argv);*/
-		char *argv[] = {"rm", "-r", "/home/farah/modul2/petshop/apex_cheats","/home/farah/modul2/petshop/musics", "/home/farah/modul2/petshop/unimportant_files" ,NULL};
+		char *argv[] = {"rm", "-r", "/home/HIKA/modul2/petshop/apex_cheats","/home/zulu/modul2/petshop/musics", "/home/zulu/modul2/petshop/unimportant_files" ,NULL};
 		execv("/usr/bin/rm", argv);
 	    }
 	  }
 	}
-this function is for unzip folder pets.zip. the file will place in /home/farah/modul2/petshop and it will execute using execv"/bin/unzip"
 
 
+## Question 3
+Ranora is an Informatics Engineering student who is currently undergoing an internship at a well-known company called "FakeKos Corp.", a company engaged in data security. Because Ranora is still an apprentice, the workload is not as big as the workload of the company's permanent workers. On Ranora's first day of work, Ranora's apprentice tutor gave her the task of making a program.
 
+
+What needs to be done for this question firstly is to:
+
+A: Ranora must create a C program which every 40 seconds creates a directory with a name according to the timestamp [YYYY-mm-dd_HH:ii:ss].
+
+B: Each directory is filled with 10 images downloaded from https://picsum.photos/, where each image will be downloaded every 5 seconds. Each downloaded image will be named with a timestamp format [YYYY-mm-dd_HH:ii:ss] and the image is square with the size (n% 1000) + 50 pixels where n is the Unix Epoch time.
+
+C: After the directory has been filled with 10 images, the program will create a file "status.txt", which contains the message "Download Success" which is encrypted with the Caesar Cipher technique and with shift 5. Caesar Cipher is a simple encryption technique which can perform encryption. string according to the shift / key that we specify. For example, the letter "A" will be encrypted with shift 4 it will become "E". Because Ranora is a perfectionist and neat person, he wants after the file is created, the directory will be zipped and the directory will be deleted, leaving only the zip file.
+D: To make it easier to control the program, the Ranora apprentice supervisor wants the program to produce an executable "Killer" program, where the program will terminate all running program processes and will run itself after the program is run. Because Ranora is interested in something new, Ranora has an idea for the "Killer" program that was made, it must be a bash program.
+
+E: The Ranora apprentice supervisor also wants the main program created by Ranora to run in two modes. To activate the first mode, the program must be executed with the -z argument, and when it is executed in the first mode, the main program will immediately execute all its operations when the Killer program is run. Meanwhile, to activate the second mode, the program must be run with the -x argument, and when run in the second mode, the main program will stop allowing the processes in each directory that are still running until it is finished (The directory that has been created will download the image to completion and create a txt file, then zip and delete the directory).
+
+# Answer 
+
+
+For 3a: what must be done to answer the question is and along with all the other is to make the daemon process that encompasses the whole which is with a template:
+# Answer
+	#include <sys/types.h>
+	#include <sys/stat.h>
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <fcntl.h>
+	#include <errno.h>
+	#include <unistd.h>
+	#include <syslog.h>
+	#include <string.h>
+
+	int main() {
+	  pid_t pid, sid;        // Variabel for PID
+
+	  pid = fork();     // Menyimpan PID dari Child Process
+
+	  /* Keluar saat fork gagal
+	  * (nilai variabel pid < 0) */
+	  if (pid < 0) {
+	    exit(EXIT_FAILURE);
+	  }
+
+	  /* Keluar saat fork berhasil
+	  * (nilai variabel pid adalah PID dari child process) */
+	  if (pid > 0) {
+	    exit(EXIT_SUCCESS);
+	  }
+
+	  umask(0);
+
+	  sid = setsid();
+	  if (sid < 0) {
+	    exit(EXIT_FAILURE);
+	  }
+
+	  if ((chdir("/")) < 0) {
+	    exit(EXIT_FAILURE);
+	  }
+
+	  close(STDIN_FILENO);
+	  close(STDOUT_FILENO);
+	  close(STDERR_FILENO);
+  
+And for the 3a is:
+ while (1) {
+   
+  
+        time_t rawtime; //run
+    
+        struct tm *information;
+    
+        char buffer[50];
+    
+        time(&rawtime); //to check to current time on the computer
+    
+        information = localtime(&rawtime); //output the local time
+    
+        strftime(buffer, sizeof(buffer), "%Y-%m-%d_%X", information); //This is for the time counting related stuff thats set by year month day and seconds i guess
+
+        pid_t child_id; //from daemon process
+        child_id = fork();
+
+        if(child_id == 0) 
+        {
+            char* arg[] = {"mkdir", "-p", buffer, NULL}; //create the directory i guess
+          
+            execv("/bin/mkdir", arg);
+    
+    
+    
+    sleep(40);
+    
+Which in this case is used to make the directory and just as it is marked the strftime along with time(&rawtime) to timestamp the directory and the mkdir to create it.
+
+The question also has a pitfall because even though pictures are downloaded every 5 seconds into the directory, the "create directory" command doesn't stop creating directories until it is stopped.
