@@ -44,22 +44,25 @@ int main() {
   while (1) {
    
     // Write Stuff here for 3a
-        time_t rawtime;
+        time_t rawtime; //run
+    
         struct tm *information;
     
-        char buffer[80];
-        time(&rawtime);
+        char buffer[50];
     
-        information = localtime(&rawtime);
+        time(&rawtime); //to check to current time on the computer
     
-        strftime(buffer, sizeof(buffer), "%Y-%m-%d_%X", information);
+        information = localtime(&rawtime); //output the local time
+    
+        strftime(buffer, sizeof(buffer), "%Y-%m-%d_%X", information); //This is for the time counting related stuff thats set by year month day and seconds i guess
 
-        pid_t child_id;
+        pid_t child_id; //from daemon process
         child_id = fork();
 
         if(child_id == 0) 
         {
-            char* arg[] = {"mkdir", "-p", buffer, NULL};
+            char* arg[] = {"mkdir", "-p", buffer, NULL}; //create the directory i guess
+          
             execv("/bin/mkdir", arg);
     
     
