@@ -282,8 +282,8 @@ For 3a: what must be done to answer the question is and along with all the other
 	  close(STDERR_FILENO);
   
 And for the 3a is:
- while (1) {
-   
+ 	
+	while (1) {
   
         time_t rawtime; //run
     
